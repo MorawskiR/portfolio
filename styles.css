@@ -66,7 +66,7 @@ img {
     max-width: 100%;
     }
 
-    .column {
+    .column .column1{
         float: left;
         width: 50%;
         padding: 10px;
@@ -81,3 +81,14 @@ img {
       }
 
       .w3-round-small{border-radius:2px}.w3-round,.w3-round-medium{border-radius:4px}.w3-round-large{border-radius:8px}.w3-round-xlarge{border-radius:16px}.w3-round-xxlarge{border-radius:32px}
+
+      @media only screen and (max-width: 600px) {
+      
+        .column .column1{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1em;
+            
+          }
+        }
