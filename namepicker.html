@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #colorDiv {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            margin: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Coloring App</title>
+</head>
+<body>
+
+<div id="colorDiv" onclick="changeColor()"></div>
+<button onclick="resetColor()">Reset</button>
+<button onclick="undoColor()">Undo</button>
+
+<script>
+    let colorStack = []; // Stos kolorów do cofania
+
+    function changeColor() {
+        const colorDiv = document.getElementById('colorDiv');
+        const newColor = getRandomColor();
+        colorStack.push(colorDiv.style.backgroundColor);
+        colorDiv.style.backgroundColor = newColor;
+    }
+
+    function resetColor() {
+        const colorDiv = document.getElementById('colorDiv');
+        colorStack.push(colorDiv.style.backgroundColor);
+        colorDiv.style.backgroundColor = '#ccc';
+    }
+
+    function undoColor() {
+        const colorDiv = document.getElementById('colorDiv');
+        if (colorStack.length > 0) {
+            const previousColor = colorStack.pop();
+            colorDiv.style.backgroundColor = previousColor;
+        }
+    }
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+
+</body>
+</html>
