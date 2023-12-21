@@ -3,45 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        #colorDiv {
-            width: 200px;
-            height: 200px;
+        #colorDiv, #colorDiv1,#colorDiv2,#colorDiv3,#colorDiv4  {
+            width: 100px;
+            height: 30px;
             background-color: #ccc;
             margin: 20px;
             cursor: pointer;
+           float: left;
+          
         }
+        .first { 
+            width: 100%; 
+            display: inline-block; 
+        } 
+        @media screen and (max-width: 500px) { 
+  
+  .first
+ { 
+      width: 70%; 
+  } 
+}
     </style>
     <title>Coloring App</title>
 </head>
 <body>
+    <header>
+        <h1>Rafał Morawski</h1>
+        <p>Tester
 
-<div id="colorDiv" onclick="changeColor()"></div>
-<button onclick="resetColor()">Reset</button>
+        </p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="post.html">Post</a></li>
+            <li><a href="testing.html">Testing</a></li>
+            <li><a href="security.html">Security</a></li>
+           
+        </ul>
+    </nav>
+
+
+    <button onclick="resetColor()">Reset</button>
 <button onclick="undoColor()">Undo</button>
+<button onclick="diwer()">diwer</button>
+<div id = "first"> 
+
+<div id="colorDiv" onclick="changeColor('colorDiv')"> Marian </div>
+<div id="colorDiv1" onclick="changeColor('colorDiv1')">Marian</div>
+<div id="colorDiv2" onclick="changeColor('colorDiv2')">Marian</div>
+<div id="colorDiv3" onclick="changeColor('colorDiv3')">Marian</div>
+<div id="colorDiv4" onclick="changeColor('colorDiv4')">Marian</div>
+
+</div>
+
 
 <script>
     let colorStack = []; // Stos kolorów do cofania
+    let rozmiar = colorStack.length;
+    let LastClick ;
+  function  diwer() {
+    console.log(LastClick);
+  }
+    function changeColor(nr) {
+        const colorDiv = document.getElementById(nr);
+        // const newColor = getRandomColor();
+        // colorStack.push(colorDiv.style.backgroundColor);
+        colorDiv.style.backgroundColor = 'red';
 
-    function changeColor() {
-        const colorDiv = document.getElementById('colorDiv');
-        const newColor = getRandomColor();
-        colorStack.push(colorDiv.style.backgroundColor);
-        colorDiv.style.backgroundColor = newColor;
+      
+        colorStack.push(colorDiv);
+        // console.log(colorStack);
+        console.log(colorStack);
+        console.log(rozmiar);
+
+        LastClick = colorDiv;
+        
     }
+ 
 
     function resetColor() {
-        const colorDiv = document.getElementById('colorDiv');
-        colorStack.push(colorDiv.style.backgroundColor);
-        colorDiv.style.backgroundColor = '#ccc';
+        //bierze kazdyh div 
+        document.getElementById('colorDiv').style.backgroundColor = '#ccc';
+        document.getElementById('colorDiv1').style.backgroundColor = '#ccc';
+        document.getElementById('colorDiv2').style.backgroundColor = '#ccc';
+        document.getElementById('colorDiv3').style.backgroundColor = '#ccc';
+        document.getElementById('colorDiv4').style.backgroundColor = '#ccc';
+
     }
 
-    function undoColor() {
-        const colorDiv = document.getElementById('colorDiv');
-        if (colorStack.length > 0) {
-            const previousColor = colorStack.pop();
-            colorDiv.style.backgroundColor = previousColor;
+    function undoColor(LastClick) { 
+        
+        if (LastClick)
+        {
+            console.log('LastClick');
         }
+        // console.log(size);
+        // document.getElementById(last).style.backgroundColor = '#ccc';
     }
 
     function getRandomColor() {
@@ -54,5 +117,8 @@
     }
 </script>
 
+    <footer class="footer">
+    <p>&copy; 2023 Imię i Nazwisko</p>
+    </footer>
 </body>
 </html>
