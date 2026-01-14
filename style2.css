@@ -1,0 +1,62 @@
+.header {
+    background: #222;
+}
+
+.header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+}
+
+/* CAŁE MENU WYŚRODKOWANE */
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    background: #0077cc;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 0.95rem;
+}
+
+.nav a:hover {
+    color: #fff;
+}
+@media (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav a {
+        margin-left: 0.6rem;
+    }
+}

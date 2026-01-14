@@ -1,48 +1,191 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moje Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Moja Strona – Blog & Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fafafa;
+            color: #111;
+        }
+.header {
+    background: #222;
+    color: #fff;
+}
+
+.header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    background: #0077cc;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 1.1rem;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav a {
+    color: #ddd;
+    margin-left: 0.8rem;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav a:hover {
+    color: #fff;
+}
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav a {
+            color: #ddd;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+        .post h2 {
+            margin: 0 0 0.3rem;
+            font-size: 1.4rem;
+        }
+        .post a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+        .post a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+        @media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        margin-top: 0.5rem;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 0.3rem;
+    }
+
+    main {
+        margin: 1rem auto;
+    }
+
+    .post h2 {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 600px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .nav {
+        width: 100%;
+    }
+
+    .nav a {
+        margin-left: 0;
+        margin-right: 0.8rem;
+    }
+}
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Moje Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="o-mnie.html">O mnie</a></li>
-        <li><a href="projekty.html">Projekty</a></li>
-        <li><a href="umiejetnosci.html">Umiejętności</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section id="o-mnie">
-      <h2>O mnie</h2>
-      <p>Jestem początkującym web developerem z pasją do tworzenia prostych i funkcjonalnych stron internetowych.</p>
-    </section>
+<header class="header">
+    <div class="header-inner">
+        <div class="brand">
+            <div class="logo">R</div>
+            <span class="title">RafalM</span>
+        </div>
 
-    <section id="projekty">
-      <h2>Projekty</h2>
-      <p>Tu znajdziesz przykładowe projekty, nad którymi pracowałem.</p>
-    </section>
+        <nav class="nav">
+            <a href="#home">rss</a>
+        <!-- //    <a href="#about">O mnie</a> -->
+            <a href="#contact">GH</a>
+        </nav>
+    </div>
+</header>
+<main id="home">
+    <!-- Sekcja wpisów -->
+    <div id="posts"></div>
+</main>
 
-    <section id="umiejetnosci">
-      <h2>Umiejętności</h2>
-      <p>HTML, CSS, JavaScript, Git, Figma</p>
-    </section>
+<footer>
+    © 2026 – Twoje Imię
+</footer>
 
-    <section id="kontakt">
-      <h2>Kontakt</h2>
-      <p>Email: example@example.com</p>
-    </section>
-  </main>
+<script>
+    // Przykładowe wpisy (w prawdziwej stronie możesz pobierać je z API)
+    const posts = [
+        { title: "Wpis pierwszy – Tytuł", date: "2025-10-12", url: "#" },
+        { title: "Drugie wpisanie o technologii", date: "2025-01-23", url: "#" },
+        { title: "Jak zrobić stronę HTML", date: "2024-09-20", url: "#" }
+    ];
 
-  <footer>
-    <p>&copy; 2025 Moje Portfolio</p>
-  </footer>
+    const container = document.getElementById("posts");
+    posts.forEach(post => {
+        const div = document.createElement("div");
+        div.className = "post";
+        div.innerHTML = `
+            <h2><a href="${post.url}">${post.title}</a></h2>
+            <small>${post.date}</small>
+        `;
+        container.appendChild(div);
+    });
+</script>
+
 </body>
 </html>
